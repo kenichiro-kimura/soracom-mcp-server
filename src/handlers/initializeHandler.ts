@@ -1,3 +1,12 @@
+import { subscriberToolsMap } from './toolsMap/subscriberToolsMap';
+import { simToolsMap } from './toolsMap/simToolsMap';
+import { groupToolsMap } from './toolsMap/groupToolsMap';
+import { billingToolsMap } from './toolsMap/billingToolsMap';
+import { logToolsMap } from './toolsMap/logToolsMap';
+import { orderToolsMap } from './toolsMap/orderToolsMap';
+import { soraCamToolsMap } from './toolsMap/soraCamToolsMap';
+import { soraletToolsMap } from './toolsMap/soraletToolsMap';
+
 type InitializeParams = {
   id: number;
 };
@@ -17,168 +26,218 @@ const handleInitialize = (params: InitializeParams, id: number) => {
             capabilities: {
                 tools: {
                     listSubscribers: {
-                        description: 'List all subscribers',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                tagName: { type: 'string' },
-                                tagValue: { type: 'string' },
-                                statusFilter: { type: 'string' },
-                            },
-                            required: [],
-                        },
+                        description: subscriberToolsMap.listSubscribers.description,
+                        parameters: subscriberToolsMap.listSubscribers.parameters,
                     },
                     getSubscriber: {
-                        description: 'Get details of a subscriber',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                imsi: { type: 'string' },
-                            },
-                            required: ['imsi'],
-                        },
+                        description: subscriberToolsMap.getSubscriber.description,
+                        parameters: subscriberToolsMap.getSubscriber.parameters,
                     },
                     listSims: {
-                        description: 'List all SIMs',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                tagName: { type: 'string' },
-                                tagValue: { type: 'string' },
-                                statusFilter: { type: 'string' },
-                            },
-                            required: [],
-                        },
+                        description: simToolsMap.listSims.description,
+                        parameters: simToolsMap.listSims.parameters,
                     },
                     getSim: {
-                        description: 'Get details of a SIM',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                sim_id: { type: 'string' },
-                            },
-                            required: ['sim_id'],
-                        },
+                        description: simToolsMap.getSim.description,
+                        parameters: simToolsMap.getSim.parameters,
                     },
                     listGroups: {
-                        description: 'List all groups',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                tagName: { type: 'string' },
-                                tagValue: { type: 'string' },
-                                limit: { type: 'number' },
-                                lastEvaluatedKey: { type: 'string' },
-                            },
-                            required: [],
-                        },
+                        description: groupToolsMap.listGroups.description,
+                        parameters: groupToolsMap.listGroups.parameters,
                     },
                     getGroup: {
-                        description: 'Get details of a group',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                groupId: { type: 'string' },
-                            },
-                            required: ['groupId'],
-                        },
+                        description: groupToolsMap.getGroup.description,
+                        parameters: groupToolsMap.getGroup.parameters,
                     },
                     getBillingHistory: {
-                        description: 'Retrieve past confirmed billing history by month',
-                        parameters: {
-                            type: 'object',
-                            properties: {},
-                            required: [],
-                        },
+                        description: billingToolsMap.getBillingHistory.description,
+                        parameters: billingToolsMap.getBillingHistory.parameters,
                     },
                     getBilling: {
-                        description: 'Retrieve confirmed billing for a specific month',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                yyyyMm: { type: 'string' },
-                            },
-                            required: ['yyyyMm'],
-                        },
+                        description: billingToolsMap.getBilling.description,
+                        parameters: billingToolsMap.getBilling.parameters,
                     },
                     getBillingPerDay: {
-                        description: 'Retrieve daily billing for a specific month',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                yyyyMm: { type: 'string' },
-                            },
-                            required: ['yyyyMm'],
-                        },
+                        description: billingToolsMap.getBillingPerDay.description,
+                        parameters: billingToolsMap.getBillingPerDay.parameters,
                     },
                     exportBilling: {
-                        description: 'Export past billing details CSV to storage',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                yyyyMm: { type: 'string' },
-                                exportMode: { type: 'string' },
-                            },
-                            required: ['yyyyMm'],
-                        },
+                        description: billingToolsMap.exportBilling.description,
+                        parameters: billingToolsMap.exportBilling.parameters,
                     },
                     getLatestBilling: {
-                        description: 'Retrieve the latest billing for the current month',
-                        parameters: {
-                            type: 'object',
-                            properties: {},
-                            required: [],
-                        },
+                        description: billingToolsMap.getLatestBilling.description,
+                        parameters: billingToolsMap.getLatestBilling.parameters,
                     },
                     exportLatestBilling: {
-                        description: 'Export the latest billing details CSV to storage',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                exportMode: { type: 'string' },
-                            },
-                            required: [],
-                        },
+                        description: billingToolsMap.exportLatestBilling.description,
+                        parameters: billingToolsMap.exportLatestBilling.parameters,
                     },
                     getBillingSummaryOfBillItems: {
-                        description: 'Retrieve billing summary by bill items for the past 4 months',
-                        parameters: {
-                            type: 'object',
-                            properties: {},
-                            required: [],
-                        },
+                        description: billingToolsMap.getBillingSummaryOfBillItems.description,
+                        parameters: billingToolsMap.getBillingSummaryOfBillItems.parameters,
                     },
                     getBillingSummaryOfSims: {
-                        description: 'Retrieve billing summary by SIMs for the past 4 months',
-                        parameters: {
-                            type: 'object',
-                            properties: {},
-                            required: [],
-                        },
+                        description: billingToolsMap.getBillingSummaryOfSims.description,
+                        parameters: billingToolsMap.getBillingSummaryOfSims.parameters,
+                    },
+                    getLogs: {
+                        description: logToolsMap.getLogs.description,
+                        parameters: logToolsMap.getLogs.parameters,
+                    },
+                    listOrders: {
+                        description: orderToolsMap.listOrders.description,
+                        parameters: orderToolsMap.listOrders.parameters,
+                    },
+                    getOrder: {
+                        description: orderToolsMap.getOrder.description,
+                        parameters: orderToolsMap.getOrder.parameters,
+                    },
+                    listOrderedSubscribers: {
+                        description: orderToolsMap.listOrderedSubscribers.description,
+                        parameters: orderToolsMap.listOrderedSubscribers.parameters,
+                    },
+                    listProducts: {
+                        description: orderToolsMap.listProducts.description,
+                        parameters: orderToolsMap.listProducts.parameters,
+                    },
+                    listAvailableDiscounts: {
+                        description: orderToolsMap.listAvailableDiscounts.description,
+                        parameters: orderToolsMap.listAvailableDiscounts.parameters,
+                    },
+                    listSoraCamDevices: {
+                        description: soraCamToolsMap.listSoraCamDevices.description,
+                        parameters: soraCamToolsMap.listSoraCamDevices.parameters,
+                    },
+                    getSoraCamDevice: {
+                        description: soraCamToolsMap.getSoraCamDevice.description,
+                        parameters: soraCamToolsMap.getSoraCamDevice.parameters,
+                    },
+                    getSoraCamDeviceAtomCamSettingsMotion: {
+                        description: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsMotion.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsMotion.parameters,
+                    },
+                    getSoraCamDeviceAtomCamSettingsMotionSensitivity: {
+                        description: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsMotionSensitivity.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsMotionSensitivity.parameters,
+                    },
+                    getSoraCamDeviceAtomCamSettingsNightVision: {
+                        description: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsNightVision.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsNightVision.parameters,
+                    },
+                    getSoraCamDeviceAtomCamSettingsQuality: {
+                        description: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsQuality.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsQuality.parameters,
+                    },
+                    getSoraCamDeviceAtomCamSettingsRotation: {
+                        description: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsRotation.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsRotation.parameters,
+                    },
+                    getSoraCamDeviceAtomCamSettingsSound: {
+                        description: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsSound.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsSound.parameters,
+                    },
+                    getSoraCamDeviceAtomCamSettingsSoundSensitivity: {
+                        description: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsSoundSensitivity.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsSoundSensitivity.parameters,
+                    },
+                    getSoraCamDeviceAtomCamSettingsStatusLight: {
+                        description: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsStatusLight.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsStatusLight.parameters,
+                    },
+                    getSoraCamDeviceAtomCamSettingsTimestamp: {
+                        description: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsTimestamp.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceAtomCamSettingsTimestamp.parameters,
+                    },
+                    listSoraCamDeviceEventsForDevice: {
+                        description: soraCamToolsMap.listSoraCamDeviceEventsForDevice.description,
+                        parameters: soraCamToolsMap.listSoraCamDeviceEventsForDevice.parameters,
+                    },
+                    getSoraCamDeviceExportUsage: {
+                        description: soraCamToolsMap.getSoraCamDeviceExportUsage.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceExportUsage.parameters,
+                    },
+                    listSoraCamDeviceImageExportsForDevice: {
+                        description: soraCamToolsMap.listSoraCamDeviceImageExportsForDevice.description,
+                        parameters: soraCamToolsMap.listSoraCamDeviceImageExportsForDevice.parameters,
+                    },
+                    exportSoraCamDeviceRecordedImage: {
+                        description: soraCamToolsMap.exportSoraCamDeviceRecordedImage.description,
+                        parameters: soraCamToolsMap.exportSoraCamDeviceRecordedImage.parameters,
+                    },
+                    getSoraCamDeviceExportedImage: {
+                        description: soraCamToolsMap.getSoraCamDeviceExportedImage.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceExportedImage.parameters,
+                    },
+                    getSoraCamDeviceName: {
+                        description: soraCamToolsMap.getSoraCamDeviceName.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceName.parameters,
+                    },
+                    getSoraCamDevicePowerState: {
+                        description: soraCamToolsMap.getSoraCamDevicePowerState.description,
+                        parameters: soraCamToolsMap.getSoraCamDevicePowerState.parameters,
+                    },
+                    listSoraCamDeviceRecordingsAndEvents: {
+                        description: soraCamToolsMap.listSoraCamDeviceRecordingsAndEvents.description,
+                        parameters: soraCamToolsMap.listSoraCamDeviceRecordingsAndEvents.parameters,
+                    },
+                    getSoraCamDeviceStreamingVideo: {
+                        description: soraCamToolsMap.getSoraCamDeviceStreamingVideo.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceStreamingVideo.parameters,
+                    },
+                    listSoraCamDeviceVideoExportsForDevice: {
+                        description: soraCamToolsMap.listSoraCamDeviceVideoExportsForDevice.description,
+                        parameters: soraCamToolsMap.listSoraCamDeviceVideoExportsForDevice.parameters,
+                    },
+                    getSoraCamDeviceExportedVideo: {
+                        description: soraCamToolsMap.getSoraCamDeviceExportedVideo.description,
+                        parameters: soraCamToolsMap.getSoraCamDeviceExportedVideo.parameters,
+                    },
+                    exportSoraCamDeviceRecordedVideo: {
+                        description: soraCamToolsMap.exportSoraCamDeviceRecordedVideo.description,
+                        parameters: soraCamToolsMap.exportSoraCamDeviceRecordedVideo.parameters,
+                    },
+                    listSoraCamDeviceAtomCamFirmwareUpdates: {
+                        description: soraCamToolsMap.listSoraCamDeviceAtomCamFirmwareUpdates.description,
+                        parameters: soraCamToolsMap.listSoraCamDeviceAtomCamFirmwareUpdates.parameters,
+                    },
+                    listSoraCamDeviceEvents: {
+                        description: soraCamToolsMap.listSoraCamDeviceEvents.description,
+                        parameters: soraCamToolsMap.listSoraCamDeviceEvents.parameters,
+                    },
+                    listSoraCamDeviceImageExports: {
+                        description: soraCamToolsMap.listSoraCamDeviceImageExports.description,
+                        parameters: soraCamToolsMap.listSoraCamDeviceImageExports.parameters,
+                    },
+                    listSoraCamDeviceVideoExports: {
+                        description: soraCamToolsMap.listSoraCamDeviceVideoExports.description,
+                        parameters: soraCamToolsMap.listSoraCamDeviceVideoExports.parameters,
+                    },
+                    listSoraCamLicensePacks: {
+                        description: soraCamToolsMap.listSoraCamLicensePacks.description,
+                        parameters: soraCamToolsMap.listSoraCamLicensePacks.parameters,
                     },
                     listSoralets: {
-                        description: 'Retrieve a list of Soralets',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                sort: { type: 'string' },
-                                limit: { type: 'number' },
-                                lastEvaluatedKey: { type: 'string' },
-                            },
-                            required: [],
-                        },
+                        description: soraletToolsMap.listSoralets.description,
+                        parameters: soraletToolsMap.listSoralets.parameters,
                     },
                     getSoralet: {
-                        description: 'Retrieve details of a Soralet',
-                        parameters: {
-                            type: 'object',
-                            properties: {
-                                soraletId: { type: 'string' },
-                            },
-                            required: ['soraletId'],
-                        },
+                        description: soraletToolsMap.getSoralet.description,
+                        parameters: soraletToolsMap.getSoralet.parameters,
                     },
-                    // Additional tools omitted for brevity
+                    getSoraletLogs: {
+                        description: soraletToolsMap.getSoraletLogs.description,
+                        parameters: soraletToolsMap.getSoraletLogs.parameters,
+                    },
+                    testSoralet: {
+                        description: soraletToolsMap.testSoralet.description,
+                        parameters: soraletToolsMap.testSoralet.parameters,
+                    },
+                    listSoraletVersions: {
+                        description: soraletToolsMap.listSoraletVersions.description,
+                        parameters: soraletToolsMap.listSoraletVersions.parameters,
+                    },
+                    
                 },
                 resources: {},
             },

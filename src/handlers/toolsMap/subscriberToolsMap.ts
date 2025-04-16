@@ -13,9 +13,27 @@ export const subscriberToolsMap = {
       args.limit,
       args.lastEvaluatedKey,
     ],
+    description: 'List all subscribers',
+    parameters: {
+      type: 'object',
+      properties: {
+        tagName: { type: 'string', description: 'Tag name to filter subscribers' },
+        tagValue: { type: 'string', description: 'Tag value to filter subscribers' },
+        statusFilter: { type: 'string', description: 'Filter by subscriber status' },
+      },
+      required: [],
+    },
   },
   getSubscriber: {
     fn: SubscriberService.getSubscriber,
     args: (args: any) => [args.imsi],
+    description: 'Get details of a subscriber',
+    parameters: {
+      type: 'object',
+      properties: {
+        imsi: { type: 'string', description: 'IMSI of the subscriber' },
+      },
+      required: ['imsi'],
+    },
   },
 };
