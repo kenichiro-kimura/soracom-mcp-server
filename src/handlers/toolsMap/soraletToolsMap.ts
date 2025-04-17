@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SoraletService } from '../../generated/services/SoraletService';
 import { ToolDefinition } from './index';
 

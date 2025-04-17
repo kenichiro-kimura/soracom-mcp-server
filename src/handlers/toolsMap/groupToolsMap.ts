@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GroupService } from '../../generated/services/GroupService';
 import { ToolDefinition } from './index';
 

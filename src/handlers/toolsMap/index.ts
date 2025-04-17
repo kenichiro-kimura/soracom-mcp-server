@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as subscriberToolsMap from './subscriberToolsMap';
 import * as simToolsMap from './simToolsMap';
 import * as groupToolsMap from './groupToolsMap';

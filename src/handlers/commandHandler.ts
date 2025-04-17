@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { handleInitialize } from './initializeHandler';
 import { handleToolsList } from './toolsListHandler';
 import { handleToolsCall } from './toolsCallHandler';
