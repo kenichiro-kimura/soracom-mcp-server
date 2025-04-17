@@ -8,30 +8,37 @@ const debugLog = (message: any) => {
   }
 };
 
+enum CommandMethods {
+  Initialize = 'initialize',
+  ToolsList = 'tools/list',
+  ToolsCall = 'tools/call',
+  NotificationsInitialized = 'notifications/initialized',
+}
+
 export const handleCommand = async (command: string) => {
   try {
     const parsedCommand = JSON.parse(command);
 
     switch (parsedCommand.method) {
-      case 'initialize': {
+      case CommandMethods.Initialize: {
         const response = handleInitialize(parsedCommand.params, parsedCommand.id);
         console.log(JSON.stringify(response));
         debugLog(JSON.stringify(response));
         debugLog('Initialization complete. Ready to accept commands.');
         break;
       }
-      case 'tools/list': {
+      case CommandMethods.ToolsList: {
         const response = handleToolsList(parsedCommand);
         console.log(JSON.stringify(response));
         break;
       }
-      case 'tools/call': {
+      case CommandMethods.ToolsCall: {
         const response = await handleToolsCall(parsedCommand.params, parsedCommand.id);
         console.log(JSON.stringify(response));
         debugLog(JSON.stringify(response));
         break;
       }
-      case 'notifications/initialized': {
+      case CommandMethods.NotificationsInitialized: {
         debugLog(`Notifications initialized: ${JSON.stringify(parsedCommand.params)}`);
         break;
       }
