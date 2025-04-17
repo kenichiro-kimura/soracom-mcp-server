@@ -1,6 +1,7 @@
 import { BillingService } from '../../generated/services/BillingService';
+import { ToolDefinition } from './index';
 
-export const billingToolsMap = {
+export const billingToolsMap: Record<string, ToolDefinition>  = {
   getBillingHistory: {
     fn: BillingService.getBillingHistory,
     args: () => [],

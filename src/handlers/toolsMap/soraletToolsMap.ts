@@ -1,6 +1,7 @@
 import { SoraletService } from '../../generated/services/SoraletService';
+import { ToolDefinition } from './index';
 
-export const soraletToolsMap = {
+export const soraletToolsMap: Record<string, ToolDefinition> = {
   listSoralets: {
     fn: SoraletService.listSoralets,
     args: (args: any) => [args.sort, args.limit, args.lastEvaluatedKey],

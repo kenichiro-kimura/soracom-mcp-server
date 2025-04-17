@@ -1,6 +1,7 @@
 import { SimService } from '../../generated/services/SimService';
+import { ToolDefinition } from './index';
 
-export const simToolsMap = {
+export const simToolsMap: Record<string, ToolDefinition>  = {
   listSims: {
     fn: SimService.listSims,
     args: (args: any) => [

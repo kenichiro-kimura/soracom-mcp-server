@@ -1,6 +1,7 @@
 import { SubscriberService } from '../../generated/services/SubscriberService';
+import { ToolDefinition } from './index';
 
-export const subscriberToolsMap = {
+export const subscriberToolsMap: Record<string, ToolDefinition>  = {
   listSubscribers: {
     fn: SubscriberService.listSubscribers,
     args: (args: any) => [

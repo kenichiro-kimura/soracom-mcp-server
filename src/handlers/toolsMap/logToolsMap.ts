@@ -1,6 +1,7 @@
 import { LogService } from '../../generated/services/LogService';
+import { ToolDefinition } from './index';
 
-export const logToolsMap = {
+export const logToolsMap: Record<string, ToolDefinition>  = {
   getLogs: {
     fn: LogService.getLogs,
     args: (args: any) => [args.target, args.start, args.end, args.limit],

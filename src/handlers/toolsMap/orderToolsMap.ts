@@ -1,6 +1,7 @@
 import { OrderService } from '../../generated/services/OrderService';
+import { ToolDefinition } from './index';
 
-export const orderToolsMap = {
+export const orderToolsMap: Record<string, ToolDefinition>  = {
   listOrders: {
     fn: OrderService.listOrders,
     args: (args: any) => [args.status, args.limit, args.lastEvaluatedKey],

@@ -1,6 +1,7 @@
 import { SoraCamService } from '../../generated/services/SoraCamService';
+import { ToolDefinition } from './index';
 
-export const soraCamToolsMap = {
+export const soraCamToolsMap: Record<string, ToolDefinition>  = {
   listSoraCamDevices: {
     fn: SoraCamService.listSoraCamDevices,
     args: () => [],

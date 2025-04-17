@@ -1,6 +1,7 @@
 import { GroupService } from '../../generated/services/GroupService';
+import { ToolDefinition } from './index';
 
-export const groupToolsMap = {
+export const groupToolsMap: Record<string, ToolDefinition>  = {
   listGroups: {
     fn: GroupService.listGroups,
     args: (args: any) => [
