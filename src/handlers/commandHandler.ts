@@ -16,8 +16,9 @@ enum CommandMethods {
 }
 
 export const handleCommand = async (command: string) => {
+  let parsedCommand = null;
   try {
-    const parsedCommand = JSON.parse(command);
+    parsedCommand = JSON.parse(command);
 
     switch (parsedCommand.method) {
       case CommandMethods.Initialize: {
@@ -49,5 +50,16 @@ export const handleCommand = async (command: string) => {
     }
   } catch (error) {
     debugLog(`Error handling command: ${error}`);
+    console.log(
+        JSON.stringify({
+            jsonrpc: '2.0',
+            id: parsedCommand.id || null,
+            error: {
+                code: 500,
+                message: 'Internal error',
+                data: error instanceof Error ? error.message : String(error),
+            },
+        }),
+    )
   }
 };
