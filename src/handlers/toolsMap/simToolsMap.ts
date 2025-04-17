@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SimService } from '../../generated/services/SimService';
 import { ToolDefinition } from './index';
 

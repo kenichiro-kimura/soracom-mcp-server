@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { OrderService } from '../../generated/services/OrderService';
 import { ToolDefinition } from './index';
 

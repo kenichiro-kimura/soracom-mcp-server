@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SoraCamService } from '../../generated/services/SoraCamService';
 import { ToolDefinition } from './index';
 

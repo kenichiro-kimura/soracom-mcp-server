@@ -1,4 +1,5 @@
-import { toolsMap, ToolDefinition } from './toolsMap/index';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { toolsMap } from './toolsMap/index';
 
 type InitializeParams = {
   id: number;

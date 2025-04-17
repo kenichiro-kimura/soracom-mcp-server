@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toolsMap } from './toolsMap/index';
 
 export const handleToolsList = (params: any) => {

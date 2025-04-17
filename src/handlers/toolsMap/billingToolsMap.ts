@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BillingService } from '../../generated/services/BillingService';
 import { ToolDefinition } from './index';
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SubscriberService } from '../../generated/services/SubscriberService';
 import { ToolDefinition } from './index';
 

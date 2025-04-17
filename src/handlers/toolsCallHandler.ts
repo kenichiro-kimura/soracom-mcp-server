@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toolsMap } from './toolsMap/index';
 
 type ToolMap = typeof toolsMap;
@@ -11,7 +12,6 @@ export const handleToolsCall = async (params: { name: ToolName; arguments: any }
     const { fn, args: argsFn } = toolsMap[name];
     // Functionのthisコンテキストを回避するため、個別に関数呼び出し
     const argsArray = argsFn(args);
-    // @ts-ignore - 異なる関数シグネチャに対応するため
     const result = await fn(...argsArray);
     return {
       jsonrpc: '2.0',
