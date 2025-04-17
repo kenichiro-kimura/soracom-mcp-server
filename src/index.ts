@@ -13,7 +13,10 @@ AuthService.auth(
     AuthService.setApiKey(response.apiKey);
     AuthService.setToken(response.token);
   }
-);
+).catch((error) => {
+  console.error('Error during authentication:', error.message);
+  process.exit(1);
+});
 
 // Create a readline interface for standard input/output
 const rl = readline.createInterface({
