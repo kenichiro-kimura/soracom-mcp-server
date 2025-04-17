@@ -13,7 +13,6 @@ export const handleToolsCall = async (params: { name: ToolName; arguments: any }
     const argsArray = argsFn(args);
     // @ts-ignore - 異なる関数シグネチャに対応するため
     const result = await fn(...argsArray);
-    console.log(JSON.stringify(result, null, 2));
     return {
       jsonrpc: '2.0',
       id: id,
