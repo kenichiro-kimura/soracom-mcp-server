@@ -2,28 +2,45 @@ import { handleInitialize } from './initializeHandler';
 import { handleToolsList } from './toolsListHandler';
 import { handleToolsCall } from './toolsCallHandler';
 
+const debugLog = (message: any) => {
+  if (process.env.DEBUG_LOG) {
+    console.error(message);
+  }
+};
+
 export const handleCommand = async (command: string) => {
   try {
     const parsedCommand = JSON.parse(command);
-    if (parsedCommand.method === 'initialize') {
-      const response = handleInitialize(parsedCommand.params, parsedCommand.id);
-      console.log(JSON.stringify(response));
-      console.error(JSON.stringify(response));
-      console.error('Initialization complete. Ready to accept commands.');
-      return;
-    } else if (parsedCommand.method === 'tools/list') {
-      const response = handleToolsList(parsedCommand);
-      console.log(JSON.stringify(response));
-      return;
-    } else if (parsedCommand.method === 'tools/call') {
-      const response = await handleToolsCall(parsedCommand.params, parsedCommand.id);
-      console.log(JSON.stringify(response));
-      console.error(JSON.stringify(response));
-      return;
-    } else {
-      console.error(`Unknown command: ${parsedCommand.method}`);
+
+    switch (parsedCommand.method) {
+      case 'initialize': {
+        const response = handleInitialize(parsedCommand.params, parsedCommand.id);
+        console.log(JSON.stringify(response));
+        debugLog(JSON.stringify(response));
+        debugLog('Initialization complete. Ready to accept commands.');
+        break;
+      }
+      case 'tools/list': {
+        const response = handleToolsList(parsedCommand);
+        console.log(JSON.stringify(response));
+        break;
+      }
+      case 'tools/call': {
+        const response = await handleToolsCall(parsedCommand.params, parsedCommand.id);
+        console.log(JSON.stringify(response));
+        debugLog(JSON.stringify(response));
+        break;
+      }
+      case 'notifications/initialized': {
+        debugLog(`Notifications initialized: ${JSON.stringify(parsedCommand.params)}`);
+        break;
+      }
+      default: {
+        debugLog(`Unknown command: ${parsedCommand.method}`);
+        break;
+      }
     }
   } catch (error) {
-    console.error('Error handling command:', error);
+    debugLog(`Error handling command: ${error}`);
   }
 };
