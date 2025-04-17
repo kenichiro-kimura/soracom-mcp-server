@@ -3,8 +3,7 @@ module.exports = {
     root: true,
     parser: '@typescript-eslint/parser',
     plugins: [
-      '@typescript-eslint',
-      'jest'
+      '@typescript-eslint'
     ],
     extends: [
       'eslint:recommended',
@@ -15,8 +14,5 @@ module.exports = {
             0,
             "unix"
         ]        
-    },
-    "env": {
-        "jest/globals": true
     }
 };
