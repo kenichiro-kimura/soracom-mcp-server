@@ -3,7 +3,7 @@ import { handleToolsList } from './toolsListHandler';
 import { handleToolsCall } from './toolsCallHandler';
 
 const debugLog = (message: any) => {
-  if (process.env.DEBUG_LOG) {
+  if (process.env.DEBUG_LOG === 'true') {
     console.error(message);
   }
 };
