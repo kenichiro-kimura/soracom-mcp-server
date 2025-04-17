@@ -58,6 +58,9 @@ More about using MCP server tools in VS Code's [agent mode documentation](https:
 
 ## Tools
 
+The provided tools are as follows. These tools support some of the SORACOM APIs, mainly for retrieving information.
+The service classes for calling all APIs(as of April 15, 2025) are located in [src/generated](src/generated), so you can refer to the file [src/handlers/toolsMap](src/handlers/toolsMap) to add more.  
+
 ## Billing Tools
 
 - **getBillingHistory**: Retrieve past confirmed billing history by month.
