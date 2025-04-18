@@ -41,7 +41,7 @@ export const handleCommand = async (command: string) => {
         break;
       }
       case CommandMethods.NotificationsInitialized: {
-        debugLog(`Notifications initialized: ${JSON.stringify(parsedCommand.params)}`);
+        debugLog(`Notifications initialized: ${JSON.stringify(parsedCommand)}`);
         break;
       }
       default: {

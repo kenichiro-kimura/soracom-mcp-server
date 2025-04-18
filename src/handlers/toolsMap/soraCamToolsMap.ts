@@ -179,15 +179,15 @@ export const soraCamToolsMap: Record<string, ToolDefinition>  = {
   },
   exportSoraCamDeviceRecordedImage: {
     fn: SoraCamService.exportSoraCamDeviceRecordedImage,
-    args: (args: any) => [args.deviceId, args.requestBody],
+    args: (args: any) => [args.deviceId, { 'time': args.time } ],
     description: 'Export still images from recorded video for a SoraCam device',
     parameters: {
       type: 'object',
       properties: {
         deviceId: { type: 'string', description: 'Device ID of the SoraCam device' },
-        requestBody: { type: 'object', description: 'Export specification' },
+        time: { type: 'number', description: 'Time to export (UNIX timestamp in ms)' },
       },
-      required: ['deviceId', 'requestBody'],
+      required: ['deviceId', 'time'],
     },
   },
   getSoraCamDeviceExportedImage: {
@@ -287,15 +287,16 @@ export const soraCamToolsMap: Record<string, ToolDefinition>  = {
   },
   exportSoraCamDeviceRecordedVideo: {
     fn: SoraCamService.exportSoraCamDeviceRecordedVideo,
-    args: (args: any) => [args.deviceId, args.requestBody],
+    args: (args: any) => [args.deviceId, {"from":args.from, "to": args.to}],
     description: 'Export recorded video for a SoraCam device',
     parameters: {
       type: 'object',
       properties: {
         deviceId: { type: 'string', description: 'Device ID of the SoraCam device' },
-        requestBody: { type: 'object', description: 'Export specification' },
+        from: { type: 'number', description: 'Start time (UNIX timestamp in ms)' },
+        to: { type: 'number', description: 'End time (UNIX timestamp in ms)' },
       },
-      required: ['deviceId', 'requestBody'],
+      required: ['deviceId', 'from', 'to'],
     },
   },
   listSoraCamDeviceAtomCamFirmwareUpdates: {
