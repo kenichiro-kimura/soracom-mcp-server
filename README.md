@@ -132,3 +132,9 @@ The service classes for calling all APIs(as of April 15, 2025) are located in [s
 - **listSoraCamDeviceImageExports**: Retrieve a list of image export statuses for all SoraCam devices.
 - **listSoraCamDeviceVideoExports**: Retrieve a list of video export statuses for all SoraCam devices.
 - **listSoraCamLicensePacks**: Retrieve a list of license packs for SoraCam.
+
+## DataEntryService Tools
+
+- **getDataEntries**: Retrieve a list of data entries from a specific resource.
+- **getDataEntry**: Retrieve details of a specific data entry by resource ID and timestamp.
+- **listDataSourceResources**: List all data source resources for the operator.
