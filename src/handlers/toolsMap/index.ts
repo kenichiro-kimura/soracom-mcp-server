@@ -7,6 +7,7 @@ import * as logToolsMap from './logToolsMap';
 import * as orderToolsMap from './orderToolsMap';
 import * as soraCamToolsMap from './soraCamToolsMap';
 import * as soraletToolsMap from './soraletToolsMap';
+import * as dataEntryToolsMap from './dataEntryToolsMap';
 
 export type ToolDefinition = {
   fn: (...args: any[]) => Promise<any>;
@@ -24,4 +25,5 @@ export const toolsMap: Record<string, ToolDefinition> = {
   ...Object.values(orderToolsMap).reduce((acc, curr) => ({ ...acc, ...curr }), {}),
   ...Object.values(soraCamToolsMap).reduce((acc, curr) => ({ ...acc, ...curr }), {}),
   ...Object.values(soraletToolsMap).reduce((acc, curr) => ({ ...acc, ...curr }), {}),
+  ...Object.values(dataEntryToolsMap).reduce((acc, curr) => ({ ...acc, ...curr }), {}),
 };
