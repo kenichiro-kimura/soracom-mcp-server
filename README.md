@@ -32,7 +32,7 @@ docker build -t soracom-mcp-server:latest .
          }
     ],
     "servers": {
-      "github": {
+      "soracom": {
         "command": "docker",
         "args": [
           "run",
